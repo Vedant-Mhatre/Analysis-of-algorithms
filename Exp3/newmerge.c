@@ -63,33 +63,36 @@ void changeData(int pid,int value)
 }
 
 
-void mergesort(int a[],int beg,int end)
+
+void mergesort(struct node *top,int beg,int end)
 {
 int mid;
 if(beg<end)
 {
 	mid=(beg+end)/2;
-	mergesort(a,beg,mid);
-	mergesort(a,mid+1,end);
-	mergearray(a,beg,mid,end);
+	mergesort(top,beg,mid);
+	mergesort(top,mid+1,end);
+	//printf("beg:%d, mid:%d, end:%d\n",beg,mid,end);
+	mergearray(top,beg,mid,end);
 }
 }
-void mergearray(int a[],int beg,int mid,int end){
-	int i,leftend,num,temp,j,k,b[50];
+
+void mergearray(struct node *top,int beg,int mid,int end){
+	int i,j,k,b[50];
 	for(i=beg;i<=end;i++)
-		b[i]=a[i];
+		b[i]=ptrData(i);
 	i=beg;
 	j=mid+1;
 	k=beg;
 	while((i<=mid)&&(j<=end)) {
 		if(b[i]<=b[j])
 		{
-			a[k]=b[i];
+			changeData(k,b[i]);
 			i++;
 			k++;
 		}
 		else  {
-			a[k]=b[j];
+			changeData(k,b[j]);
 			j++;
 			k++;
 		}
@@ -97,14 +100,14 @@ void mergearray(int a[],int beg,int mid,int end){
 
 	if(i<=mid){
 		  while(i<=mid) {
-			a[k]=b[i];
+			changeData(k,b[i]);
 			i++;
 			k++;
 		}
 	}
 	else {
 		while(j<=end){
-			a[k]=b[j];
+			changeData(k,b[j]);
 			j++;
 			k++;
 		}
@@ -113,17 +116,21 @@ void mergearray(int a[],int beg,int mid,int end){
 
 void main()
 {
-	int *n = (int *)malloc(sizeof(int));
+	int n;
     printf("Enter number of elements\n");
-	scanf("%d", n);
-	printf("Enter %d values\n",*n);
+	scanf("%d",&n);
+	printf("Enter %d values\n",n);
 
-  	int *c = (int *)malloc(sizeof(int));
-	for(*c=0;*c<*n;*c=*c+1)
+  	int c;
+	for (c = 0; c < n; c++)
 		insert();
 	printf("Before Sorting:\n");
 	print();
-	//sort(top,n);
+	mergesort(top,0,n);
+	ptrAtId(3);
+	//printf("%d\n",ptrData(3));
+	//changeData(3,44);
+	//printf("%d\n",ptrData(3));
 	//printf("After Sorting:\n");
 	//print();
 	
