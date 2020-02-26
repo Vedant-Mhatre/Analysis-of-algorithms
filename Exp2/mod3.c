@@ -51,66 +51,6 @@ void changeData(int pid,int value)
 	ptr->data = value;
 }
 
-// ---------------------------------------------------------------------
-
-void mergearray(struct node *top,int beg,int mid,int end){
-	int i,j,k,b[50],temp;
-	for(i=beg;i<=end;i++)
-		b[i]=ptrData(i);
-	i=beg;
-	j=mid+1;
-	k=beg;
-	while((i<=mid)&&(j<=end)) {
-		if(b[i]<=b[j])
-		{
-			//changeData(k,b[i]);
-			temp = b[i];
-			changeData(k,temp);
-			i++;
-			k++;
-		}
-		else  {
-			temp = b[j];
-			changeData(k,temp);
-			j++;
-			k++;
-		}
-	}
-
-	if(i<=mid){
-		  while(i<=mid) {
-			temp = b[i];
-			changeData(k,temp);
-			i++;
-			k++;
-		}
-	}
-	else {
-		while(j<=end){
-			temp = b[j];
-			changeData(k,temp);
-			j++;
-			k++;
-		}
-	}
-}
-
-
-void mergesort(struct node *top,int beg,int end)
-{
-int mid;
-if(beg<end)
-{
-	mid=(beg+end)/2;
-	mergesort(top,beg,mid);
-	mergesort(top,mid+1,end);
-	//printf("beg:%d, mid:%d, end:%d\n",beg,mid,end);
-	mergearray(top,beg,mid,end);
-}
-}
-
-
-
 
 
 //----------------------------------------------
@@ -159,7 +99,7 @@ void main()
 		insert();
 	printf("Before Sorting:\n");
 	print();
-	mergesort(top,0,*n);
+	sort(top,n);
 	printf("After Sorting:\n");
 	print();
 	

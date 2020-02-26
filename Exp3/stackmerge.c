@@ -15,6 +15,7 @@ void insert()
 	struct node *new_node = (struct node *) malloc(sizeof(struct node));
 	scanf("%d",&new_node->data);
 	new_node->next = NULL;
+	
 
 	if (top == NULL){
 		new_node->id = 0;
@@ -40,6 +41,7 @@ void print()
 		ptr = ptr->next;
 	}	
 }
+
 
 void ptrAtId(int pid)
 {
