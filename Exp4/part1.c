@@ -105,12 +105,15 @@ void main()
 {
 	int arr[10]={12,42,14,52,36,42,23,63,13,43};
 	int arr2[10];
+	printf("Before sorting array:\n");
 	for(int i=0;i<10;i++)
 		printf("%d\n",arr[i]);
-	printf("\n");
+
 	quicksort(arr,0,4);
 	mergesort(arr,5,9);
 	sort(arr,0,10,arr2);
+
+	printf("After sorting array:\n");
 	for(int i=0;i<10;i++)
 		printf("%d\n",arr2[i]);
 }

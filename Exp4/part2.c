@@ -1,4 +1,5 @@
 #include<stdio.h>
+#include<stdlib.h>
 void mergesort(int[],int,int);
 void mergearray(int[],int,int,int);
 
@@ -106,22 +107,20 @@ void main()
 	int n;
 	printf("Enter number of elements:\n");
 	scanf("%d",&n);
-	int *arr[n];
-	// = (int*) malloc(n * sizeof(int));
+	int* arr;
+	arr = (int*) malloc(n * sizeof(int));
 	
 	printf("Enter elements:\n");
-	for(int i=0;i<n;i++)
-		scanf("%d\n", arr[i]);
-	/*for(int i=0;i<n;i++)
-		printf("%d\n",ptr+i);	
-		
-	printf("\n");
+	for (int i = 0; i < n; i++)
+        scanf("%d",&arr[i]); 
+   
 	quicksort(arr,0,(n/2)-1);
 	mergesort(arr,(n/2),n-1);
 	int arr2[n];
 	sort(arr,0,n,arr2);
+	printf("After sorting\n");
 	for(int i=0;i<n;i++)
 		printf("%d\n",arr2[i]);
-	*/
+	
 }
 
