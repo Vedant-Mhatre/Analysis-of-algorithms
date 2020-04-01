@@ -1,18 +1,19 @@
 #include<stdio.h>
 main()
 {
-int x[10],i,n;
+float x[10];
+int i,n;
 printf("enter number of elements:\n");
 scanf("%d",&n);
 printf("enter the elements:\n");
 for(i=0;i<n;i++)
-scanf("%d",&x[i]);
+scanf("%f",&x[i]);
 quicksort(x,0,n-1);
 printf("\n sorted elements are:\n");
 for(i=0;i<n;i++)
-printf("%d",x[i]);
+printf("%f",x[i]);
 }
-quicksort(int x[10],int first,int last)
+quicksort(float x[10],int first,int last)
 {
 int pivot,i,j,t;
 if(first<last)

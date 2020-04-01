@@ -1,4 +1,3 @@
-
 # include<stdio.h>
  
 void knapsack(int n, float weight[], float profit[], float capacity) {
@@ -7,8 +6,8 @@ void knapsack(int n, float weight[], float profit[], float capacity) {
    u = capacity;
  
    for (i = 0; i < n; i++)
-      x[i] = 0.0;
- 
+     x[i] = 0.0;
+
    for (i = 0; i < n; i++) {
       if (weight[i] > u)
          break;
@@ -51,7 +50,8 @@ int main() {
    for (i = 0; i < num; i++) {
       ratio[i] = profit[i] / weight[i];
    }
- 
+ for(int i=0;i<n;i++)
+		printf("%f\n",ratio[i]);
    for (i = 0; i < num; i++) {
       for (j = i + 1; j < num; j++) {
          if (ratio[i] < ratio[j]) {
@@ -69,7 +69,8 @@ int main() {
          }
       }
    }
- 
+ for(int i=0;i<n;i++)
+		printf("%f\n",ratio[i]);
    knapsack(num, weight, profit, capacity);
    return(0);
 }
